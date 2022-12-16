@@ -9,7 +9,8 @@ jobs:
     steps:
       - uses: google-github-actions/release-please-action@v3
         with:
-          command: manifest
+          release-type: node
+          package-name: chromecast-client
 
       - run: echo "A release was created. ${{ steps.release.outputs }}"
         if: ${{ steps.release.outputs.releases_created }}
