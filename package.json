@@ -1,6 +1,6 @@
 {
   "name": "chromecast-client",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
   "files": [
