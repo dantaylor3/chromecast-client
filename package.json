@@ -1,6 +1,6 @@
 {
   "name": "chromecast-client",
-  "version": "0.0.10",
+  "version": "0.1.1",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
   "files": [
@@ -9,11 +9,11 @@
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src --ext .ts",
-    "fix": "pnpm lint --fix",
+    "fix": "npm run lint --fix",
     "build": "run-p clean fix && run-p build:esm build:cjs",
     "build:esm": "tsc --module esnext --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
