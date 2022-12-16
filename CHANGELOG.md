@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.0](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.1.1...chromecast-client-v0.2.0) (2022-12-16)
+
+
+### Features
+
+* added GH action for release-please ([3aa0852](https://github.com/dantaylor3/chromecast-client/commit/3aa085260ee8f6df52e7153bfecb17c67f9316bc))
+
+
+### Bug Fixes
+
+* gh release ([f71bb51](https://github.com/dantaylor3/chromecast-client/commit/f71bb51618ac85ebc7cd88301d2d65deb2fb4125))
+* gh release ([1bc938f](https://github.com/dantaylor3/chromecast-client/commit/1bc938f181979ed644f6f5d256c2d4d0e48271ff))
+
 ## [0.1.1](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.1.0...chromecast-client-v0.1.1) (2022-12-16)
 
 
