@@ -11,7 +11,6 @@ This module is a mid-level library which uses [castv2](https://github.com/thibau
 * a Platform implementing basic features of the Chromecast
 * a DefaultMedia application implementation to control Chromecast media
 * a Dashcast application implementation as another application example
-* TODO: a Youtube application implementation
 
 This module is intended to be composable and reusable for other use cases outside of those implemented and wouldn't have been possible without both [castv2](https://github.com/thibauts/node-castv2) and [nodecastor](https://github.com/vincentbernat/nodecastor)
 
