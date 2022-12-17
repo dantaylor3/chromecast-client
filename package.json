@@ -3,9 +3,11 @@
   "version": "0.2.2",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
+  "description": "A Typescript Chromecast client",
   "files": [
     "/dist"
   ],
+  "keywords": ["chromecast", "castv2", "chromecast client"],
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src --ext .ts",
