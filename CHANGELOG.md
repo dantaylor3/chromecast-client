@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.2.1...chromecast-client-v0.2.2) (2022-12-17)
+
+
+### Bug Fixes
+
+* updated gh workflow ([aa84178](https://github.com/dantaylor3/chromecast-client/commit/aa84178be1d017c1e678fa9e7714eeab1798383a))
+
 ## [0.2.1](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.2.0...chromecast-client-v0.2.1) (2022-12-17)
 
 
