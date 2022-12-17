@@ -59,8 +59,8 @@ export const createChannel =
       send,
       sendWithResponse,
       close: () => {
-        channel.removeAllListeners()
         channel.close()
+        channel.removeAllListeners()
       },
     }
   }
