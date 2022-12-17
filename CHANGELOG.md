@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.2.4...chromecast-client-v0.2.5) (2022-12-17)
+
+
+### Bug Fixes
+
+* fixed eventlistener leak in channel ([7bb9a24](https://github.com/dantaylor3/chromecast-client/commit/7bb9a24c7d66e4a9a35c67bd9ec37a8c402d36ae))
+
 ## [0.2.4](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.2.3...chromecast-client-v0.2.4) (2022-12-17)
 
 
