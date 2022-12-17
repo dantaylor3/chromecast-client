@@ -4,7 +4,7 @@
 ![Types][types-image]
 [![Patreon][patreon-image]][patreon-url]
 
-### A Typescript based Chromecast client
+## A Typescript based Chromecast client
 This module is a mid-level library which uses [castv2](https://github.com/thibauts/node-castv2) as a basis for communicating with a Chromecast to provide a fully typed, promise-based api for interacting with the Chromecast. It provides
 * a persistent client that will keep your client connected to the Chromecast
 * controllers for common namespaces used by the Chromecast
@@ -15,7 +15,7 @@ This module is a mid-level library which uses [castv2](https://github.com/thibau
 
 This module is intended to be composable and reusable for other use cases outside of those implemented and wouldn't have been possible without both [castv2](https://github.com/thibauts/node-castv2) and [nodecastor](https://github.com/vincentbernat/nodecastor)
 
-### Installation
+## Installation
 **Install with Yarn**
 ```sh
 yarn add chromecast-client
@@ -26,9 +26,9 @@ yarn add chromecast-client
 npm install chromecast-client
 ```
 
-### Usage
+## Usage
 
-#### Platform
+### Platform
 The platform provides basic controls for the Chromecast like changing the volume and launching applications.
 
 ```ts
@@ -72,7 +72,7 @@ console.log(status)
 ```
 </details>
 
-#### Using a Controller Directly
+### Using a Controller Directly
 We're going to use the Media controller to get the current volume of the Chromecast.
 
 ```ts
@@ -95,7 +95,7 @@ console.log(volume)
 ```
 </details>
 
-#### Using an Application
+### Using an Application
 An application is an abstraction on top of one or more controllers that provides a friendly interface to work with. This way, you don't have to work directly with controllers, look up documentation on what commands the protocol supports, etc.
 
 We're going to use the DefaultMediaApp to launch the media app on the chromecast, play some content, and control the playback of that content.
@@ -130,10 +130,10 @@ await mediaApp.queueLoad({
 setTimeout(() => mediaApp.seek({relativeTime: 60}), 10000)
 ```
 
-### Discovering Chromecasts on the Network
+## Discovering Chromecasts on the Network
 This library doesn't support chromecast discovery directly because it is well supported by other libraries. Any library that supports multicast DNS discovery will work (such as [bonjour-service](), [mdns](), or [multicast-dns]()).
 
-#### Example using bonjour-service
+### Example using bonjour-service
 ```ts
 import Bonjour from 'bonjour-service'
 
