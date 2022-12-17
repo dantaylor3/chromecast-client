@@ -38,6 +38,7 @@ console.log(status)
 ```
 
 <details><summary>Sample Status Response</summary>
+
 ```json
 {
     "applications": [
@@ -84,6 +85,7 @@ console.log(volume)
 ```
 
 <details><summary>Sample Volume Response</summary>
+
 ```json
 {
     "controlType": "attenuation",
