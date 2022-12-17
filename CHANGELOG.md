@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.2.3...chromecast-client-v0.2.4) (2022-12-17)
+
+
+### Bug Fixes
+
+* added package.json information ([ed2120b](https://github.com/dantaylor3/chromecast-client/commit/ed2120b57824b9568f6dd88eadaf51fa86d06e44))
+
 ## [0.2.3](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.2.2...chromecast-client-v0.2.3) (2022-12-17)
 
 
