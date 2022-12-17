@@ -1,6 +1,6 @@
 {
   "name": "chromecast-client",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
   "description": "A Typescript Chromecast client",
@@ -17,7 +17,11 @@
     "type": "git",
     "url": "https://github.com/dantaylor3/chromecast-client.git"
   },
-  "keywords": ["chromecast", "castv2", "chromecast client"],
+  "keywords": [
+    "chromecast",
+    "castv2",
+    "chromecast client"
+  ],
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src --ext .ts",
