@@ -4,9 +4,19 @@
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
   "description": "A Typescript Chromecast client",
+  "homepage": "https://github.com/dantaylor3/chromecast-client#readme",
+  "bugs": {
+    "url": "https://github.com/dantaylor3/chromecast-client/issues"
+  },
+  "license": "MIT",
+  "funding": "https://www.patreon.com/dantaylor",
   "files": [
     "/dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dantaylor3/chromecast-client.git"
+  },
   "keywords": ["chromecast", "castv2", "chromecast client"],
   "scripts": {
     "clean": "rimraf dist",
