@@ -10,21 +10,23 @@ const _getJoinableTransportId = (status: ReceiverStatus): Result<string> => {
 
 const _join = async <T>(
   status: Promise<Result<ReceiverStatus>>,
-  factory: (sourceId: string, destinationId: string) => T
+  factory: (sourceId: string, destinationId: string) => Promise<T>
 ): Promise<Result<T>> => {
   const transportIdMaybe = await status.then(Result.flatMap(_getJoinableTransportId)).then(r => r.unwrapWithErr())
 
   return transportIdMaybe.isOk
-    ? Result.Ok(factory(generateRandomSourceId(), transportIdMaybe.value))
+    ? Result.Ok(await factory(generateRandomSourceId(), transportIdMaybe.value))
     : Result.Err(transportIdMaybe.value)
 }
 
 export const launchAndJoin = async <T>({
   client,
+  appId,
   factory,
 }: {
   client: PersistentClient
-  factory: (sourceId: string, destinationId: string) => T
+  appId: string
+  factory: (sourceId: string, destinationId: string) => Promise<T>
 }): Promise<Result<T>> => {
   const receiver = createReceiver({
     client,
@@ -32,7 +34,7 @@ export const launchAndJoin = async <T>({
     destinationId: 'receiver-0',
   })
   try {
-    return await _join(receiver.launch('CC1AD845'), (sourceId, destinationId) => factory(sourceId, destinationId))
+    return await _join(receiver.launch(appId), (sourceId, destinationId) => factory(sourceId, destinationId))
   } finally {
     receiver.dispose()
   }
@@ -43,7 +45,7 @@ export const join = async <T>({
   factory,
 }: {
   client: PersistentClient
-  factory: (sourceId: string, destinationId: string) => T
+  factory: (sourceId: string, destinationId: string) => Promise<T>
 }): Promise<Result<T>> => {
   const receiver = createReceiver({
     client,

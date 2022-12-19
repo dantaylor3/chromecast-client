@@ -6,11 +6,12 @@ import * as Application from './application'
 export const launchAndJoin = ({client}: {client: PersistentClient}): Promise<Result<MediaController>> =>
   Application.launchAndJoin({
     client,
-    factory: (sourceId, destinationId) => createMediaController({client, sourceId, destinationId}),
+    appId: 'CC1AD845',
+    factory: async (sourceId, destinationId) => createMediaController({client, sourceId, destinationId}),
   })
 
 export const join = ({client}: {client: PersistentClient}): Promise<Result<MediaController>> =>
   Application.join({
     client,
-    factory: (sourceId, destinationId) => createMediaController({client, sourceId, destinationId}),
+    factory: async (sourceId, destinationId) => createMediaController({client, sourceId, destinationId}),
   })
