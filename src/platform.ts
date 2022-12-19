@@ -6,6 +6,7 @@ export const createPlatform = (client: PersistentClient) => {
 
   return {
     getStatus: (...args: Parameters<Receiver['getStatus']>) => receiver.getStatus(...args),
+    getVolume: (...args: Parameters<Receiver['getVolume']>) => receiver.getVolume(...args),
     setVolume: (...args: Parameters<Receiver['setVolume']>) => receiver.setVolume(...args),
     isAppAvailable: (...args: Parameters<Receiver['isAppAvailable']>) => receiver.isAppAvailable(...args),
     stopRunningApp: (...args: Parameters<Receiver['stop']>) => receiver.stop(...args),

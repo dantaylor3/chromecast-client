@@ -1,5 +1,6 @@
 import {Client} from 'castv2'
 import Debug from 'debug'
+
 import {createChannel} from './channel'
 import {withTimeout} from './utils'
 const debug = Debug('persistent-client')

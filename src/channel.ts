@@ -1,10 +1,19 @@
 import {Client} from 'castv2'
-import {tryParseJSON} from './utils'
+import {z, ZodTypeDef} from 'zod'
+
+import {Result, tryParseJSON} from './utils'
 
 export type Channel = {
   send: (data: Record<string, unknown>) => void
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  sendWithResponse: (data: Record<string, unknown>, timeout?: number) => Promise<Record<string, any>>
+  sendWithResponse: <T = unknown>({
+    data,
+    type,
+    timeout,
+  }: {
+    data: Record<string, unknown>
+    type?: z.ZodType<T, ZodTypeDef, unknown>
+    timeout?: number
+  }) => Promise<Result<T>>
   close: () => void
 }
 
@@ -17,7 +26,7 @@ export const createChannel =
     onMessage: (data: Record<string, unknown>, isBroadcast: boolean) => void = () => {}
   ): Channel => {
     let lastRequestId = 0
-    const channel = client.createChannel(sourceId, destinationId, namespace, 'JSON')
+    const channel = client.createChannel(sourceId, destinationId, namespace)
     client.send(sourceId, destinationId, 'urn:x-cast:com.google.cast.tp.connection', JSON.stringify({type: 'CONNECT'}))
     channel.on('message', (data, isBroadcast) => {
       if (typeof data === 'object') return onMessage(data, isBroadcast)
@@ -29,35 +38,32 @@ export const createChannel =
     const send = (data: Record<string, unknown>) =>
       client.send(sourceId, destinationId, namespace, JSON.stringify(data))
 
-    const sendWithResponse = (data: Record<string, unknown>, timeout = 5000) =>
-      new Promise<Record<string, unknown>>((resolve, reject) => {
-        const requestId = ++lastRequestId
-
-        client.on('message', function onMessage(sid, dit, ns, data) {
-          const json = tryParseJSON(data)
-          if (
-            json !== undefined &&
-            json.requestId === requestId &&
-            sid === destinationId &&
-            (dit === sourceId || dit === '*') &&
-            namespace === ns
-          ) {
-            client.removeListener('message', onMessage)
-            return resolve(json)
-          }
-        })
-
-        setTimeout(() => {
-          client.removeListener('message', onMessage)
-          reject(new Error(`timed out for request ${requestId}`))
-        }, timeout)
-
-        send({...data, requestId})
-      })
-
     return {
-      send,
-      sendWithResponse,
+      send: data => client.send(sourceId, destinationId, namespace, JSON.stringify(data)),
+      sendWithResponse: ({data, type = z.any(), timeout = 5000}) =>
+        new Promise(resolve => {
+          const requestId = ++lastRequestId
+
+          channel.on('message', function onMessage(data) {
+            const json = typeof data === 'string' ? tryParseJSON(data) : data
+            if (json !== undefined && json.requestId === requestId) {
+              channel.removeListener('message', onMessage)
+              const parsed = type.safeParse(json)
+              resolve(
+                parsed.success
+                  ? Result.Ok(parsed.data)
+                  : Result.Err(new Error(`response had unexpected shape: ${parsed.error}`))
+              )
+            }
+          })
+
+          setTimeout(() => {
+            channel.removeListener('message', onMessage)
+            resolve(Result.Err(new Error(`timed out for request ${requestId}`)))
+          }, timeout)
+
+          send({...data, requestId})
+        }),
       close: () => {
         channel.close()
         channel.removeAllListeners()
