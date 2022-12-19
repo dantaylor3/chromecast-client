@@ -1,6 +1,6 @@
 {
   "name": "chromecast-client",
-  "version": "0.2.5",
+  "version": "1.0.0",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
   "description": "A robust Chromecast client written in Typescript",
@@ -30,7 +30,6 @@
     "build:esm": "tsc --module esnext --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "prepublishOnly": "npm run build",
-
     "runExample-platform": "ts-node ./examples/platform",
     "runExample-mediaApp": "ts-node ./examples/mediaApp",
     "runExample-errorHandling": "ts-node ./examples/errorHandling",

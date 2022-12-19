@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.2.5...chromecast-client-v1.0.0) (2022-12-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* added typesafe responses
+
+### Features
+
+* added typesafe responses ([783c84b](https://github.com/dantaylor3/chromecast-client/commit/783c84b9e8e58bfed0a2f187895099d73462c1e4))
+
 ## [0.2.5](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.2.4...chromecast-client-v0.2.5) (2022-12-17)
 
 
