@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v1.0.0...chromecast-client-v1.0.1) (2022-12-19)
+
+
+### Bug Fixes
+
+* dashcast launching capabilities ([99f068d](https://github.com/dantaylor3/chromecast-client/commit/99f068d933f05d3811cb7308e350ca7ffea613c5))
+* updated main and types files in package.json ([ef91e18](https://github.com/dantaylor3/chromecast-client/commit/ef91e18506719cf42e5b450c5f1ac2f2f79f5c4c))
+
 ## [1.0.0](https://github.com/dantaylor3/chromecast-client/compare/chromecast-client-v0.2.5...chromecast-client-v1.0.0) (2022-12-19)
 
 
