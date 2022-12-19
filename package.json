@@ -1,8 +1,8 @@
 {
   "name": "chromecast-client",
   "version": "1.0.0",
-  "main": "dist/cjs/index.js",
-  "types": "dist/cjs/index.d.ts",
+  "main": "dist/cjs/src/index.js",
+  "types": "dist/cjs/src/index.d.ts",
   "description": "A robust Chromecast client written in Typescript",
   "homepage": "https://github.com/dantaylor3/chromecast-client#readme",
   "bugs": {
