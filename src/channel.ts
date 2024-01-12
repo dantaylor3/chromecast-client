@@ -1,7 +1,8 @@
 import {Client} from 'castv2'
 import {z, ZodTypeDef} from 'zod'
+import {fromZodError} from 'zod-validation-error'
 
-import {Result, tryParseJSON} from './utils'
+import {fromValidationError, Result, tryParseJSON} from './utils'
 
 export type Channel = {
   send: (data: Record<string, unknown>) => void
@@ -49,11 +50,15 @@ export const createChannel =
             if (json !== undefined && json.requestId === requestId) {
               channel.removeListener('message', onMessage)
               const parsed = type.safeParse(json)
-              resolve(
-                parsed.success
-                  ? Result.Ok(parsed.data)
-                  : Result.Err(new Error(`response had unexpected shape: ${parsed.error}`))
-              )
+              if (parsed.success) {
+                resolve(Result.Ok(parsed.data))
+              } else {
+                const err: Error = fromValidationError(
+                  fromZodError(parsed.error, {prefix: `response had unexpected shape`}),
+                  json
+                )
+                resolve(Result.Err(err))
+              }
             }
           })
 
