@@ -33,7 +33,7 @@ export const Application$ = z.object({
 export type Application = z.infer<typeof Application$>
 
 export const ReceiverStatus$ = z.object({
-  applications: z.array(Application$),
+  applications: z.array(Application$).optional(),
   volume: Volume$,
 })
 export type ReceiverStatus = z.infer<typeof ReceiverStatus$>
