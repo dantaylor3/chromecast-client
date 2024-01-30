@@ -4,7 +4,10 @@ import {PersistentClient} from '../persistentClient'
 import {generateRandomSourceId, Result} from '../utils'
 
 const _getJoinableTransportId = (status: ReceiverStatus): Result<string> => {
-  const app = status.applications.find(a => a.namespaces.map(e => e.name).includes('urn:x-cast:com.google.cast.media'))
+  const app =
+    status.applications === undefined
+      ? undefined
+      : status.applications.find(a => a.namespaces.map(e => e.name).includes('urn:x-cast:com.google.cast.media'))
   return app === undefined ? Result.Err(new Error('failed to find joinable application')) : Result.Ok(app.transportId)
 }
 

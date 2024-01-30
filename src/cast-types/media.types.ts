@@ -37,6 +37,6 @@ export const MediaStatus$ = z.object({
   playbackRate: z.number(),
   playerState: PlayerState$,
   supportedMediaCommands: z.number(), // sum of SupportedMediaCommands
-  volume: Volume$,
+  volume: Volume$.nullish(),
 })
 export type MediaStatus = z.infer<typeof MediaStatus$>
