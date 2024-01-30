@@ -1,6 +1,6 @@
 export * from './cast-types'
 export {Channel} from './channel'
-export {connect, PersistentClient} from './persistentClient'
+export {PersistentClient, connect} from './persistentClient'
 export {createPlatform} from './platform'
 export {Result} from './utils'
 export * as ReceiverController from './controllers/receiver'

@@ -1,7 +1,8 @@
-import {connect, ReceiverController} from '../src'
+import {PersistentClient, ReceiverController} from '../src'
 ;(async () => {
   // create a persistent client connected on a given host
-  const client = await connect({host: '192.168.1.150'})
+  const client = new PersistentClient({host: '192.168.1.150'})
+  await client.connect()
 
   // launch the media app on the Chromecast and join the session (so we can control the CC)
   const controller = ReceiverController.createReceiver({client})
